@@ -8,28 +8,35 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class InstallCommand extends Command
 {
-    protected static $defaultName = 'install';
+    const BASE_PATH = '../../../';
 
-    protected function configure()
-    {
-        // ...
-    }
+    const ENVIRONMENTS = [
+        'staging',
+        'production',
+    ];
+
+    protected static $defaultName = 'install';
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
         $io->title("Install deployment foundation");
-        // ... put here the code to run in your command
 
-        // this method must return an integer number with the "exit status code"
-        // of the command. You can also use these constants to make code more readable
+        foreach( self::ENVIRONMENTS as $env ) {
+            $thisBasePath = self::BASE_PATH.$env;
+            mkdir($thisBasePath);
+            mkdir($thisBasePath.'/current');
+            mkdir($thisBasePath.'/releases');
+            mkdir($thisBasePath.'/shared');
+            mkdir($thisBasePath.'/shared/public');
+            mkdir($thisBasePath.'/shared/public/fileadmin');
+            mkdir($thisBasePath.'/shared/public/typo3temp');
+            mkdir($thisBasePath.'/shared/public/uploads');
+            mkdir($thisBasePath.'/shared/var');
+            mkdir($thisBasePath.'/shared/config');
 
-        // return this if there was no problem running the command
-        // (it's equivalent to returning int(0))
+            $io->text("Added standard folders for environment " . $env);
+        }
         return Command::SUCCESS;
-
-        // or return this if some error happened during the execution
-        // (it's equivalent to returning int(1))
-        // return Command::FAILURE;
     }
 }
