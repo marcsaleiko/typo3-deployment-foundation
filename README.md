@@ -1,1 +1,3 @@
-# typo3-deployment-foundation
+# TYPO3 Deployment foundation
+
+Not yet ready to use.
