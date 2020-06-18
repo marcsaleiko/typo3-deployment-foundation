@@ -1,0 +1,22 @@
+{
+    "name": "marcsaleiko/typo3-deployment-foundation",
+    "description": "A little helper tool that installs the deployment foundation",
+    "minimum-stability": "stable",
+    "version": "0.0.1-alpha",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Marc Saleiko",
+            "email": "marc.saleiko@komadesign.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "symfony/console": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "MarcSaleiko\\Typo3DeploymentFoundation\\": "src"
+        }
+    }
+}
